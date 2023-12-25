@@ -4,18 +4,25 @@ import Posts from "./components/Posts";
 import { fetchPosts } from "./api/postApi";
 
 interface Post {
-  message: string,
+  id: number,
+  username: string,
+  email: string,
+}
+
+interface User {
+  users: Post[]
 }
 
 function App() {
 
-  const [posts, setPosts] = useState<Post | null>();
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response: Post = await fetchPosts();
-        setPosts(response);
+        const response: User = await fetchPosts();
+        // console.log(response);
+        setPosts(response.users);
       } catch(error) {
         console.error('Error fetching users:', error);
       }
@@ -30,10 +37,12 @@ function App() {
       </header>
       <body>
         <Posts />
-        <p>
+        <div>
           {/* オブジェクトであるpotsの"messageを受け取る"" */}
-          { posts ?  posts["message"] : "" }
-        </p>
+          { posts?.map((post) => (
+            <div> { post.username } </div>
+          )) }
+        </div>
       </body>
     </div>
   );
