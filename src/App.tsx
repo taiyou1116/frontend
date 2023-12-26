@@ -5,8 +5,9 @@ import { fetchPosts } from "./api/postApi";
 
 interface Post {
   id: number,
-  username: string,
-  email: string,
+  user_id: number,
+  title: string,
+  body: string,
 }
 
 interface Response {
@@ -39,7 +40,7 @@ function App() {
         <div>
           {/* 配列であるpostsの username を受け取る */}
           { posts?.map((post) => (
-            <div> { post.username } </div>
+            <div> { post.title } </div>
           )) }
         </div>
       </body>

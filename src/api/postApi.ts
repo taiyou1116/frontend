@@ -1,7 +1,7 @@
 
 export const fetchPosts = async () => {
     try {
-        const response = await fetch('http://localhost:8000/users');
+        const response = await fetch('http://localhost:8000/posts');
         if (!response.ok) {
             throw new Error('ネットワークエラー');
         }
