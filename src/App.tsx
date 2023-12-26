@@ -9,8 +9,8 @@ interface Post {
   email: string,
 }
 
-interface User {
-  users: Post[]
+interface Response {
+  posts: Post[]
 }
 
 function App() {
@@ -20,9 +20,8 @@ function App() {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response: User = await fetchPosts();
-        // console.log(response);
-        setPosts(response.users);
+        const response: Response = await fetchPosts();
+        setPosts(response.posts);
       } catch(error) {
         console.error('Error fetching users:', error);
       }
@@ -38,7 +37,7 @@ function App() {
       <body>
         <Posts />
         <div>
-          {/* オブジェクトであるpotsの"messageを受け取る"" */}
+          {/* 配列であるpostsの username を受け取る */}
           { posts?.map((post) => (
             <div> { post.username } </div>
           )) }
