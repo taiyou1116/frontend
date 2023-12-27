@@ -40,16 +40,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/newpost" element={<PostPage />} />
+        <Route path="/" element={<Posts posts={posts} />} />
       </Routes>
-      <div>
-          <Posts />
-          <div>
-            {/* 配列であるpostsの username を受け取る */}
-            { posts?.map((post) => (
-              <div> { post.title + " : " + post.username } </div>
-            )) }
-          </div>
-        </div>
     </Router>
   );
 }
