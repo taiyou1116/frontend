@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import { fetchPosts } from "./api/postApi";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PostPage from "./components/PostPage";
 
 interface Post {
   id: number,
@@ -32,20 +34,23 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <Router>
       <div>
         <Header />
       </div>
+      <Routes>
+        <Route path="/newpost" element={<PostPage />} />
+      </Routes>
       <div>
-        <Posts />
-        <div>
-          {/* 配列であるpostsの username を受け取る */}
-          { posts?.map((post) => (
-            <div> { post.title + " : " + post.username } </div>
-          )) }
+          <Posts />
+          <div>
+            {/* 配列であるpostsの username を受け取る */}
+            { posts?.map((post) => (
+              <div> { post.title + " : " + post.username } </div>
+            )) }
+          </div>
         </div>
-      </div>
-    </div>
+    </Router>
   );
 }
 
