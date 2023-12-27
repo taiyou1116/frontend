@@ -8,6 +8,7 @@ interface Post {
   user_id: number,
   title: string,
   body: string,
+  username: string,
 }
 
 interface Response {
@@ -40,7 +41,7 @@ function App() {
         <div>
           {/* 配列であるpostsの username を受け取る */}
           { posts?.map((post) => (
-            <div> { post.title } </div>
+            <div> { post.title + " : " + post.username } </div>
           )) }
         </div>
       </body>
