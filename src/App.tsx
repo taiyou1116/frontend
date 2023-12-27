@@ -33,10 +33,10 @@ function App() {
 
   return (
     <div>
-      <header>
+      <div>
         <Header />
-      </header>
-      <body>
+      </div>
+      <div>
         <Posts />
         <div>
           {/* 配列であるpostsの username を受け取る */}
@@ -44,7 +44,7 @@ function App() {
             <div> { post.title + " : " + post.username } </div>
           )) }
         </div>
-      </body>
+      </div>
     </div>
   );
 }

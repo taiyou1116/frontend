@@ -3,9 +3,9 @@ function Post() {
   return (
     <div>
       <title>タイトル</title>
-      <body>
+      <div>
         ボディ
-      </body>
+      </div>
     </div>
   )
 }
