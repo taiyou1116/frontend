@@ -33,7 +33,7 @@ function Posts() {
 
   return (
     <div>
-      {/* 配列であるpostsの username を受け取る */}
+      ホーム画面
       { posts?.map((post: any) => (
         <div> { post.title + " : " + post.username } </div>
       )) }
