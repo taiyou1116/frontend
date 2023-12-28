@@ -12,11 +12,11 @@ export const fetchPosts = async () => {
     }
 }
 
-export const submitPost = async (title: string, content: string) => {
+export const submitPost = async (title: string, content: string, user_id: number) => {
     try {
         const response = await fetch('http://localhost:8000/api/submit-post', {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({ title, content, user_id }),
             headers: {
                 'Content-Type': 'application/json'
             }

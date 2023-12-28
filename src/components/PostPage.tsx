@@ -10,7 +10,7 @@ function PostPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     
-    submitPost(title, content);
+    submitPost(title, content, 1);
     console.log('送信されたデータ:', { title, content });
   };
 
