@@ -6,15 +6,15 @@ import PostPage from "./components/PostPage";
 function App() {
   
   return (
-    <Router>
-      <div>
+    <div className=" h-screen w-screen">
+      <Router>
         <Header />
-      </div>
       <Routes>
         <Route path="/newpost" element={<PostPage />} />
         <Route path="/" element={<Posts />} />
       </Routes>
     </Router>
+    </div>
   );
 }
 
