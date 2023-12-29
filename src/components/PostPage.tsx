@@ -6,12 +6,13 @@ import { submitPost } from "../api/postApi";
 function PostPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  let userId: number = 1;
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     
-    submitPost(title, content, 1);
-    console.log('送信されたデータ:', { title, content });
+    submitPost(title, content, userId);
+    console.log('送信されたデータ:', { title, content, userId });
   };
 
   return (
