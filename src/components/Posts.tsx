@@ -35,7 +35,7 @@ function Posts() {
     <div>
       ホーム画面
       { posts?.map((post: any) => (
-        <div> { post.title + " : " + post.username } </div>
+        <div key={post.id}> { post.title + " : " + post.username } </div>
       )) }
     </div>
   )
