@@ -31,3 +31,11 @@ export const submitPost = async (title: string, content: string, user_id: number
         console.error('エラーが発生しました:', error);
     }
 }
+
+export const createUser = async (email: string, password: string) => {
+    try {
+        
+    } catch(err) {
+
+    }
+}
