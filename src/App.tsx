@@ -5,6 +5,7 @@ import Posts from "./components/Posts";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PostPage from "./components/PostPage";
 import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   
@@ -13,9 +14,10 @@ function App() {
       <Router>
         <Header />
       <Routes>
-        <Route path="/newpost" element={<PostPage />} />
-        <Route path="/create-user" element={<Register />} />
         <Route path="/" element={<Posts />} />
+        <Route path="/newpost" element={<PostPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
     </div>

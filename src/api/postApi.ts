@@ -34,7 +34,7 @@ export const submitPost = async (title: string, content: string, user_id: number
 
 export const createUser = async (username: string, password: string) => {
     try {
-        const response = await fetch('http://localhost:8000/api/create-user', {
+        const response = await fetch('http://localhost:8000/api/register', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: {

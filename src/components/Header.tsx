@@ -16,7 +16,7 @@ function Header() {
       <button onClick={() => navigateToPath('/newpost')}>
         投稿する
       </button>
-      <button onClick={() => navigateToPath('/create-user')}>
+      <button onClick={() => navigateToPath('/register')}>
         作成する
       </button>
     </div>
