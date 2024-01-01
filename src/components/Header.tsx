@@ -19,6 +19,9 @@ function Header() {
       <button onClick={() => navigateToPath('/register')}>
         作成する
       </button>
+      <button onClick={() => navigateToPath('/login')}>
+        ログイン
+      </button>
     </div>
   )
 }
