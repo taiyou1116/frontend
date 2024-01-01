@@ -32,10 +32,22 @@ export const submitPost = async (title: string, content: string, user_id: number
     }
 }
 
-export const createUser = async (email: string, password: string) => {
+export const createUser = async (username: string, password: string) => {
     try {
-        
-    } catch(err) {
+        const response = await fetch('http://localhost:8000/api/create-user', {
+            method: 'POST',
+            body: JSON.stringify({ username, password }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 
+        if (!response.ok) {
+            throw new Error('サーバーからのレスポンスは正常ではありません');
+        }
+        const responseData = await response.json();
+        console.log('レスポンス: ', responseData);
+    } catch(err) {
+        console.error('エラー: ', err);
     }
 }
