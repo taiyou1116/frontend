@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUser } from "../api/postApi";
 
-function CreateUser() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,4 +28,4 @@ function CreateUser() {
   )
 }
 
-export default CreateUser
+export default Register
