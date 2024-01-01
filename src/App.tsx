@@ -1,7 +1,10 @@
+// ルート管理
+
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PostPage from "./components/PostPage";
+import CreateUser from "./components/CreateUser";
 
 function App() {
   
@@ -11,6 +14,7 @@ function App() {
         <Header />
       <Routes>
         <Route path="/newpost" element={<PostPage />} />
+        <Route path="/create-user" element={<CreateUser />} />
         <Route path="/" element={<Posts />} />
       </Routes>
     </Router>
