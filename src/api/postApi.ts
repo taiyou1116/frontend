@@ -67,6 +67,11 @@ export const login = async (username: string, password: string) => {
         }
         const responseData = await response.json();
         console.log('レスポンス: ', responseData);
+        
+        if (responseData.token) {
+            // 本番環境追加 -> `Secure;` なし -> HttpOnly;
+            document.cookie = `token=${responseData.token}; path=/; max-age=86400; SameSite=Strict`;
+        }
     } catch(err) {
         console.error('エラー: ', err);
     }
