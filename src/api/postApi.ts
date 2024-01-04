@@ -72,6 +72,7 @@ export const login = async (username: string, password: string) => {
             // 本番環境追加 -> `Secure;` なし -> HttpOnly;
             document.cookie = `token=${responseData.token}; path=/; max-age=86400; SameSite=Strict`;
         }
+        return responseData.username
     } catch(err) {
         console.error('エラー: ', err);
     }

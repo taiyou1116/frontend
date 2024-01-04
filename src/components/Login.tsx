@@ -7,8 +7,14 @@ function Login() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-        
-    login(username, password);
+    
+    // ログインがうまくいったらユーザー情報を受け取る
+    try {
+      const userInfo = await login(username, password);
+      console.log("info: ", userInfo);
+    } catch(err) {
+      console.error("error: ", err);
+    }
     console.log('送信されたデータ:', { username, password });
   };
 

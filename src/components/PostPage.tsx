@@ -11,7 +11,7 @@ function PostPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     
-    submitPost(title, content, userId);
+    await submitPost(title, content, userId);
     console.log('送信されたデータ:', { title, content, userId });
   };
 
