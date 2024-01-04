@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { login } from "../api/postApi";
+import { useStore } from "../store/store";
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const setStateOfUserName = useStore((store) => store.setUserName);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     
     // ログインがうまくいったらユーザー情報を受け取る
     try {
-      const userInfo = await login(username, password);
-      console.log("info: ", userInfo);
+      await login(username, password);
+      setStateOfUserName(username);
     } catch(err) {
       console.error("error: ", err);
     }

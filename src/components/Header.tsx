@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import '../App.css'
+import { useStore } from "../store/store";
 
 function Header() {
   let navigate = useNavigate();
+
+  const userName = useStore((store) => store.userName);
 
   const navigateToPath = (path: string) => {
     navigate(path);
@@ -22,6 +25,7 @@ function Header() {
       <button onClick={() => navigateToPath('/login')}>
         ログイン
       </button>
+      <h1>{ userName }</h1>
     </div>
   )
 }
