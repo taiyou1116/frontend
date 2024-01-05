@@ -77,3 +77,26 @@ export const login = async (username: string, password: string) => {
         console.error('エラー: ', err);
     }
 }
+
+// サイトに訪れた際にJWTの検証
+export const verifyToken = async (token: string) => {
+    try {
+        const response = await fetch('http://localhost:8000/api/verify-token', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error('トークンの検証に失敗しました');
+        }
+
+        const responseData = await response.json();
+        return responseData;
+    } catch(err) {
+        console.error('エラー: ', err);
+    }
+    
+}

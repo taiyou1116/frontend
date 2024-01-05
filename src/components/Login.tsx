@@ -12,9 +12,10 @@ function Login() {
     e.preventDefault();
     
     // ログインがうまくいったらユーザー情報を受け取る
+    // (userInfoをあとで画像情報も加えたオブジェクトにする)
     try {
-      await login(username, password);
-      setStateOfUserName(username);
+      const userInfo = await login(username, password);
+      setStateOfUserName(userInfo);
     } catch(err) {
       console.error("error: ", err);
     }
