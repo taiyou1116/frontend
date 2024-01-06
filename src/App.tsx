@@ -9,9 +9,13 @@ import Login from "./components/Login";
 import { getCookie } from "./lib/cookieUtils";
 import { useEffect } from "react";
 import { verifyToken } from "./api/postApi";
+import { useStore } from "./store/store";
 
 function App() {
 
+  const setStateOfUserName = useStore((store) => store.setUserName);
+
+  // あとで場所変更するかも
   useEffect(() => {
     const fn = async () => {
       const token = getCookie('token');
@@ -20,13 +24,14 @@ function App() {
         const result = await verifyToken(token);
         // データを受け取る
         console.log("JWTによる解析結果: ", result);
+        setStateOfUserName(result.response);
       } catch(err) {
         console.error('エラー: ', err);
       }
     }
 
     fn();
-  })
+  }, [setStateOfUserName])
   
   return (
     <div className=" h-screen w-screen overflow-hidden">

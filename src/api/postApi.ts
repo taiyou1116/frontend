@@ -98,5 +98,4 @@ export const verifyToken = async (token: string) => {
     } catch(err) {
         console.error('エラー: ', err);
     }
-    
 }
