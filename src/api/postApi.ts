@@ -99,3 +99,29 @@ export const verifyToken = async (token: string) => {
         console.error('エラー: ', err);
     }
 }
+
+export const saveImage =async (image: File | null) => {
+    if (!image) {
+        alert("写真を選択してください");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", image);
+
+    try {
+        const response = await fetch('http://localhost:8000/api/upload-image', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error('サーバーでのアップロードに失敗しました。');
+        }
+
+        alert('アップロード成功！');
+    } catch (err) {
+        console.error('アップロードエラー:', err);
+        alert('アップロードに失敗しました。');
+    }
+}

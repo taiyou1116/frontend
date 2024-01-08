@@ -25,6 +25,9 @@ function Header() {
       <button onClick={() => navigateToPath('/login')}>
         ログイン
       </button>
+      <button onClick={() => navigateToPath('/profile')}>
+        プロフィール設定
+      </button>
       <h1>{ userName }</h1>
     </div>
   )

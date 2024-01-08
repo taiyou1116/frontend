@@ -10,6 +10,7 @@ import { getCookie } from "./lib/cookieUtils";
 import { useEffect } from "react";
 import { verifyToken } from "./api/postApi";
 import { useStore } from "./store/store";
+import Profile from "./components/Profile";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/newpost" element={<PostPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
     </div>
