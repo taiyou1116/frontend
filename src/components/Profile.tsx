@@ -13,14 +13,18 @@ function Profile() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const result = await saveImage(image);
-    console.log("写真保存" + result);
+    
+    try {
+      const result = await saveImage(image);
+      console.log("写真保存" + result);
+    } catch(err) {
+      console.error("エラーが発生しました" + err);
+    }
   }
 
   return(
     <form onSubmit={handleSubmit}>
-      <input type="file" onChange={handleChangeImage}></input>
+      <input type="file" accept="image/jpeg, image/png, image/gif" onChange={handleChangeImage}></input>
       <button type="submit">保存</button>
     </form>
   )
