@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { saveImage } from "../api/postApi";
+import { getCookie } from "../lib/cookieUtils";
 
 function Profile() {
   const [image, setImage] = useState<File | null>(null);
@@ -15,8 +16,11 @@ function Profile() {
     e.preventDefault();
     
     try {
-      const result = await saveImage(image);
-      console.log("写真保存" + result);
+      const token = getCookie('token');
+      if (!token) return;
+
+      await saveImage(image, token);
+      // console.log("写真パス" + result);
     } catch(err) {
       console.error("エラーが発生しました" + err);
     }

@@ -100,7 +100,7 @@ export const verifyToken = async (token: string) => {
     }
 }
 
-export const saveImage =async (image: File | null) => {
+export const saveImage = async (image: File | null, token: string) => {
     if (!image) {
         alert("写真を選択してください");
         return;
@@ -113,6 +113,9 @@ export const saveImage =async (image: File | null) => {
         const response = await fetch('http://localhost:8000/api/upload-image', {
             method: 'POST',
             body: formData,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
 
         if (!response.ok) {
@@ -120,6 +123,7 @@ export const saveImage =async (image: File | null) => {
         }
 
         alert('アップロード成功！');
+        // const responseData = await response.json();
     } catch (err) {
         console.error('アップロードエラー:', err);
         alert('アップロードに失敗しました。');
