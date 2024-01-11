@@ -15,6 +15,8 @@ import Profile from "./components/Profile";
 function App() {
 
   const setStateOfUserName = useStore((store) => store.setUserName);
+  const setStateOfImage = useStore((store) => store.setUserImage);
+  
 
   // あとで場所変更するかも
   useEffect(() => {
@@ -23,29 +25,29 @@ function App() {
       if (!token) return;
       try {
         const result = await verifyToken(token);
-        // データを受け取る
-        console.log("JWTによる解析結果: ", result);
-        setStateOfUserName(result.response);
+        setStateOfUserName(result.username);
+        setStateOfImage(result.imageURL);
       } catch(err) {
         console.error('エラー: ', err);
       }
     }
 
     fn();
-  }, [setStateOfUserName])
+  }, [setStateOfUserName, setStateOfImage])
   
   return (
     <div className=" h-screen w-screen overflow-hidden">
       <Router>
         <Header />
-      <Routes>
-        <Route path="/" element={<Posts />} />
-        <Route path="/newpost" element={<PostPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/" element={<Posts />} />
+          <Route path="/newpost" element={<PostPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
