@@ -12,12 +12,13 @@ export const fetchPosts = async () => {
     }
 }
 
-export const submitPost = async (title: string, content: string, user_id: number) => {
+export const submitPost = async (title: string, content: string, token: string) => {
     try {
         const response = await fetch('http://localhost:8000/api/submit-post', {
             method: 'POST',
-            body: JSON.stringify({ title, content, user_id }),
+            body: JSON.stringify({ title, content }),
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });

@@ -20,7 +20,6 @@ function Profile() {
       if (!token) return;
 
       await saveImage(image, token);
-      // console.log("写真パス" + result);
     } catch(err) {
       console.error("エラーが発生しました" + err);
     }

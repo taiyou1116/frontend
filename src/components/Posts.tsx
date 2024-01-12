@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../api/postApi";
 import Post from "./Post";
-import { useStore } from "../store/store";
 
 interface Response {
   posts: PostElement[]
@@ -19,7 +18,6 @@ interface PostElement {
 function Posts() {
 
   const [posts, setPosts] = useState<PostElement[]>([]);
-  const img = useStore((store) => store.userImage);
 
   useEffect(() => {
     const getPosts = async () => {

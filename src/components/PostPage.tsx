@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 import { submitPost } from "../api/postApi";
+import { getCookie } from "../lib/cookieUtils";
 
 function PostPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  let userId: number = 1;
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const token = getCookie('token');
+    if (!token) return;
     
-    await submitPost(title, content, userId);
-    console.log('送信されたデータ:', { title, content, userId });
+    await submitPost(title, content, token);
   };
 
   return (
