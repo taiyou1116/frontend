@@ -43,7 +43,6 @@ function Posts() {
             username={ post.username }
           />
       )) }
-      <img src={img} alt="まだ" />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { UserState } from "../types/UserState";
 
 export const useStore = create<UserState>((set, get) => ({
-    userName: "名無し",
+    userName: "",
     userImage: "",
 
     setUserName: (userName: string) => {
