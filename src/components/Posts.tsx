@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "../api/postApi";
 import Post from "./Post";
 
-interface Response {
+type Response = {
   posts: PostElement[]
 }
 
-interface PostElement {
+type PostElement = {
   id: number,
   user_id: number,
   title: string,
@@ -15,9 +15,29 @@ interface PostElement {
   username: string,
 }
 
+type Reply = {
+  username: string,
+  userimage: string,
+  body: string,
+}
+
 function Posts() {
 
   const [posts, setPosts] = useState<PostElement[]>([]);
+
+  // テスト
+  const replies: Reply[] = [
+    {
+      username: "a",
+      userimage: "b",
+      body: "c",
+    },
+    {
+      username: "aa",
+      userimage: "bb",
+      body: "cc",
+    },
+  ]
 
   useEffect(() => {
     const getPosts = async () => {
@@ -39,6 +59,7 @@ function Posts() {
             title={post.title}
             body={ post.body }
             username={ post.username }
+            replies={replies}
           />
       )) }
     </div>
